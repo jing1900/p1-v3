@@ -1,0 +1,54 @@
+{%extends 'base.html'%}
+{%block title%}商品页{%endblock%}
+{%block css%}/static/styles/pages/index.css {%endblock%}
+
+{%block content%}
+<div class="page-main ">
+    <div class="list clearfix js-image-list">
+        {%for address in address%}
+
+
+        <article class="mod clearfix">
+                <header class="mod-hd clearfix">
+                    <time class="time">{{address.view_price}}￥</time>
+
+                    <div class="profile-info">
+                        <a title="{{address.shop_name}}" href="">{{address.shop_name}}</a>
+                    </div>
+                </header>
+                <div class="mod-bd clearfix">
+                    <div class="img-box">
+                        <a href="{{address.comment_url}}">
+                            <img src="{{address.pic_url}}">
+                        </a>
+                    </div>
+                </div>
+                <div class="mod-ft clearfix">
+                    <ul class="discuss-list js-discuss-list" id="ul">
+
+                        <li  class="more-discuss">
+                            <a href="{{address.comment_url}}">
+                                <span>{{address.goods_title}}</span></a><br>
+                            <span>{{address.view_sales}}</span>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </article>
+        {%endfor%}
+    </div>
+{% if has_next %}
+    <div class="more-content js-load-more">
+            <a class="_oidfu" href="javascript:void(0);">更多</a>
+    </div>
+{% endif %}
+</div>
+
+
+{%endblock%}
+{% block js %}
+
+<script type="text/javascript" src="/static/js/jquery.js"></script>
+<script type="text/javascript" src="/static/js/address_profile.js"></script>
+{% endblock%}
